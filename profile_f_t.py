@@ -25,10 +25,12 @@ def profile(model, inp_data, want_op_file=False, cuda_=False):
   #     mynn["Norm Size"].append(str(df1["Norm Size"][i1]))
 
   #   df=DataFrame(mynn, columns= ["Layer Name","FLOPs","Self CPU total","CPU Total","GPU Total","Input Features","Output Features","Dict Size of Emb","Emb Vector Size","Norm Size"])
-  df = pd.merge(df2, df1, on="Layer Name")
-  if want_op_file==True:
-    export_csv = df.to_csv (r'output_file.csv', index = None, header=True)
-  else:
-    print(df)
+  #del df2["Layer Name"]
+  result = pd.concat([df1, df2], axis=1).reindex(df1.index)
+  #   if want_op_file==True:
+  #     export_csv = df.to_csv (r'output_file.csv', index = None, header=True)
+  #   else:
+  #     print(df)
+  print(result)
     
     
