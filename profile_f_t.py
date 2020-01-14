@@ -10,16 +10,16 @@ def profile(model, inp_data, want_op_file=False, cuda_=False):
   df2=prof.display()
   
   mynn={"Layer Name":[],"FLOPs":[],"Self CPU total":[], "CPU Total":[], "GPU Total":[],"Input Features":[], "Output Features":[], "Dict Size of Emb":[], "Emb Vector Size":[], "Norm Size":[]}
-  for ((i1,row1) in df1.head().iterrows()) && ((i2,row2) in df2.head().iterrows()):
-    mynn["Layer Name"].append(row1["Layer Name"])
-    mynn["Self CPU total"].append(row1["Self CPU total"])
-    mynn["CPU Total"].append(row1["CPU total"])
-    mynn["GPU Total"].append(row1["GPU total"])
-    mynn["Input Features"].append(row2["Input Features"])
-    mynn["Output Features"].append(row2["Output Features"])
-    mynn["Dict Size of Emb"].append(row2["Dict Size of Emb"])
-    mynn["Emb Vector Size"].append(row2["Emb Vector Size"])
-    mynn["Norm Size"].append(row2["Norm Size"])
+  for (i1 in df1.index) and (i2 in df2.index):
+    mynn["Layer Name"][i1].append(row1["Layer Name"])
+    mynn["Self CPU total"][i1].append(row1["Self CPU total"])
+    mynn["CPU Total"][i1].append(row1["CPU total"])
+    mynn["GPU Total"][i1].append(row1["GPU total"])
+    mynn["Input Features"][i2].append(row2["Input Features"])
+    mynn["Output Features"][i2].append(row2["Output Features"])
+    mynn["Dict Size of Emb"][i2].append(row2["Dict Size of Emb"])
+    mynn["Emb Vector Size"][i2].append(row2["Emb Vector Size"])
+    mynn["Norm Size"][i2].append(row2["Norm Size"])
   
   df3 = DataFrame(mynn, columns= ["Layer Name","FLOPs","Self CPU total","CPU Total","GPU Total","Input Features","Output Features","Dict Size of Emb","Emb Vector Size","Norm Size"])
  
