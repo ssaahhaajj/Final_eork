@@ -10,7 +10,7 @@ def profile(model, inp_data, want_op_file=False, cuda_=False):
   df2=prof.display()
   
   mynn={"Layer Name":[],"FLOPs":[],"Self CPU total":[], "CPU Total":[], "GPU Total":[],"Input Features":[], "Output Features":[], "Dict Size of Emb":[], "Emb Vector Size":[], "Norm Size":[]}
-  for ((i1,row1) in df1.head().iterrows()) and ((i2,row2) in df2.head().iterrows()):
+  for ((i1,row1) in df1.head().iterrows()) && ((i2,row2) in df2.head().iterrows()):
     mynn["Layer Name"].append(row1["Layer Name"])
     mynn["Self CPU total"].append(row1["Self CPU total"])
     mynn["CPU Total"].append(row1["CPU total"])
