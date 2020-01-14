@@ -1,6 +1,7 @@
 from thop import profile as pf_flop
 import torchprof as pf_time
 from pandas import DataFrame
+import pandas as pd
 
 def profile(model, inp_data, want_op_file=False, cuda_=False):
   df1 = pf_flop(model, inputs=(inp_data, ))  
@@ -24,9 +25,10 @@ def profile(model, inp_data, want_op_file=False, cuda_=False):
   #     mynn["Norm Size"].append(str(df1["Norm Size"][i1]))
 
   #   df=DataFrame(mynn, columns= ["Layer Name","FLOPs","Self CPU total","CPU Total","GPU Total","Input Features","Output Features","Dict Size of Emb","Emb Vector Size","Norm Size"])
-  #   if want_op_file==True:
-  #     export_csv = df.to_csv (r'output_file.csv', index = None, header=True)
-  #   else:
-  #     print(df3)
+  df = pd.merge(df2, df1, on="Layer Name")
+  if want_op_file==True:
+    export_csv = df.to_csv (r'output_file.csv', index = None, header=True)
+  else:
+    print(df)
     
     
