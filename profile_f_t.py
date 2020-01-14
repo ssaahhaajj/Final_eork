@@ -1,6 +1,6 @@
 from thop import profile as pf_flop
 import torchprof as pf_time
-import pandas as DataFrame
+from pandas import DataFrame
 
 def profile(model, inp_data, want_op_file=False, cuda_=False):
   df1 = pf_flop(model, inputs=(inp_data, ))  
