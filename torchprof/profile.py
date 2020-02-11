@@ -154,9 +154,9 @@ def traces_to_display(traces, trace_events, show_events=False, paths=None):
         cpu_time = 0
         cuda_time = 0
         if measures:
-            self_cpu_time = (measures.self_cpu_total)
-            cpu_time = (measures.cpu_total)
-            cuda_time = (measures.cuda_total)
+            self_cpu_time = (measures.self_cpu_total/1000000.0)
+            cpu_time = (measures.cpu_total/1000000.0)
+            cuda_time = (measures.cuda_total/1000000.0)
         if self_cpu_time==0:
             continue
         format_lines.append([name, self_cpu_time, cpu_time, cuda_time])
