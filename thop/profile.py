@@ -98,7 +98,7 @@ def profile(model, inputs, custom_ops=None, verbose=True):
     total_ops = 0
     total_params = 0
 
-    mynn={"Layer Name":[],"Input Features":[], "Output Features":[], "Dict Size of Emb":[], "Emb Vector Size":[], "Norm Size":[], "FLOPs":[]}
+    mynn={"Layer_Name":[],"Input_Features":[], "Output_Features":[], "Dict_Size_of_Emb":[], "Emb_Vector_Size":[], "Norm_Size":[], "FLOPs":[]}
     for m in model.modules():
         if len(list(m.children())) > 0:  # skip for non-leaf module
             continue
@@ -108,38 +108,38 @@ def profile(model, inputs, custom_ops=None, verbose=True):
             if ch=='(':
                 break
             layer_name=layer_name+ch
-        mynn["Layer Name"].append(layer_name)
+        mynn["Layer_Name"].append(layer_name)
 
         if hasattr(m, "in_features"):
-            mynn["Input Features"].append(str(m.in_features))
+            mynn["Input_Features"].append(str(m.in_features))
         else:
-            mynn["Input Features"].append("0")
+            mynn["Input_Features"].append("0")
 
         if hasattr(m, "out_features"):
-            mynn["Output Features"].append(str(m.out_features))
+            mynn["Output_Features"].append(str(m.out_features))
         else:
-            mynn["Output Features"].append("0")
+            mynn["Output_Features"].append("0")
 
         if hasattr(m, "num_embeddings"):
-            mynn["Dict Size of Emb"].append(str(m.num_embeddings))
+            mynn["Dict_Size_of_Emb"].append(str(m.num_embeddings))
         else:
-            mynn["Dict Size of Emb"].append("0")
+            mynn["Dict_Size_of_Emb"].append("0")
 
         if hasattr(m, "embedding_dim"):
-            mynn["Emb Vector Size"].append(str(m.embedding_dim))
+            mynn["Emb_Vector_Size"].append(str(m.embedding_dim))
         else:
-            mynn["Emb Vector Size"].append("0")
+            mynn["Emb_Vector_Size"].append("0")
 
         if hasattr(m, "normalized_shape"):
-            mynn["Norm Size"].append(str(m.normalized_shape[0]))
+            mynn["Norm_Size"].append(str(m.normalized_shape[0]))
         else:
-            mynn["Norm Size"].append("0")
+            mynn["Norm_Size"].append("0")
 
         mynn["FLOPs"].append(str(m.total_ops.item()))
         total_ops += m.total_ops
         total_params += m.total_params
         
-    df = DataFrame(mynn, columns= ["Layer Name","Input Features","Output Features","Dict Size of Emb","Emb Vector Size","Norm Size","FLOPs"])
+    df = DataFrame(mynn, columns= ["Layer_Name","Input_Features","Output_Features","Dict_Size_of_Emb","Emb_Vector_Size","Norm_Size","FLOPs"])
     total_ops = total_ops.item()
     total_params = total_params.item()
 
