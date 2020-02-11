@@ -157,28 +157,12 @@ def traces_to_display(traces, trace_events, show_events=False, paths=None):
             self_cpu_time = (measures.self_cpu_total)
             cpu_time = (measures.cpu_total)
             cuda_time = (measures.cuda_total)
-        pre = ""
-        next_depths = [pl[0] for pl in tree_lines[idx + 1 :]]
-        current = True
-        while depth:
-            if current:
-                if depth in next_depths and next_depths[0] >= depth:
-                    pre = dt[1]
-                else:
-                    pre = dt[2]
-            else:
-                if depth in next_depths:
-                    pre = dt[0] + pre
-                else:
-                    pre = dt[3] + pre
-            depth -= 1
-            current = False
-        if self_cpu_time=="":
+        if self_cpu_time==0:
             continue
         format_lines.append([name, self_cpu_time, cpu_time, cuda_time])
 
     # construct the table
-    mynn={"Layer Name":[],"Self CPU total":[],"CPU total":[],"GPU total":[]}
+    mynn={"Layer_Name":[],"Self_CPU_total":[],"CPU_total":[],"GPU_total":[]}
 
     #heading = ("Module", "Self CPU totacl", "CPU total", "CUDA total")
     #max_lens = [max(map(len, col)) for col in zip(*([heading] + format_lines))]
@@ -190,11 +174,11 @@ def traces_to_display(traces, trace_events, show_events=False, paths=None):
     #     disp += "-|-".join(["-" * mlen for mlen in max_lens]) + "\n"
     for line in format_lines:
         label, self_cpu_time, cpu_time, cuda_time = line
-        mynn["Layer Name"].append(str(label))
-        mynn["Self CPU total"].append(self_cpu_time)
-        mynn["CPU total"].append(cpu_time)
-        mynn["GPU total"].append(cuda_time)
+        mynn["Layer_Name"].append(str(label))
+        mynn["Self_CPU_total"].append(self_cpu_time)
+        mynn["CPU_total"].append(cpu_time)
+        mynn["GPU_total"].append(cuda_time)
         
-    df = DataFrame(mynn, columns= ["Layer Name","Self CPU total","CPU total","GPU total"])
+    df = DataFrame(mynn, columns= ["Layer_Name","Self_CPU_total","CPU_total","GPU_total"])
     
     return df
