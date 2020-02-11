@@ -113,27 +113,27 @@ def profile(model, inputs, custom_ops=None, verbose=True):
         if hasattr(m, "in_features"):
             mynn["Input Features"].append(str(m.in_features))
         else:
-            mynn["Input Features"].append("-")
+            mynn["Input Features"].append("0")
 
         if hasattr(m, "out_features"):
             mynn["Output Features"].append(str(m.out_features))
         else:
-            mynn["Output Features"].append("-")
+            mynn["Output Features"].append("0")
 
         if hasattr(m, "num_embeddings"):
             mynn["Dict Size of Emb"].append(str(m.num_embeddings))
         else:
-            mynn["Dict Size of Emb"].append("-")
+            mynn["Dict Size of Emb"].append("0")
 
         if hasattr(m, "embedding_dim"):
             mynn["Emb Vector Size"].append(str(m.embedding_dim))
         else:
-            mynn["Emb Vector Size"].append("-")
+            mynn["Emb Vector Size"].append("0")
 
         if hasattr(m, "normalized_shape"):
             mynn["Norm Size"].append(str(m.normalized_shape[0]))
         else:
-            mynn["Norm Size"].append("-")
+            mynn["Norm Size"].append("0")
 
         mynn["FLOPs"].append(str(m.total_ops.item()))
         total_ops += m.total_ops
