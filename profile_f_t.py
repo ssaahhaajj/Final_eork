@@ -8,8 +8,8 @@ def profile(model, inp_data, want_op_file=False, cuda_=False):
   with pf_time.Profile(model, use_cuda=cuda_) as prof:
     model(inp_data)
   df2=prof.display()
-  for i1 in df1.index:
-    df1["Layer_Name"][i1]=df2["Layer_Name"][i1]
+#   for i1 in df1.index:
+#     df1["Layer_Name"][i1]=df2["Layer_Name"][i1]
   #   print(df1)
   #   print(df2)
   #   mynn={"Layer Name":[],"FLOPs":[],"Self CPU total":[], "CPU Total":[], "GPU Total":[],"Input Features":[], "Output Features":[], "Dict Size of Emb":[], "Emb Vector Size":[], "Norm Size":[]}
