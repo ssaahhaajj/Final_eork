@@ -150,13 +150,13 @@ def traces_to_display(traces, trace_events, show_events=False, paths=None):
     format_lines = []
     for idx, tree_line in enumerate(tree_lines):
         depth, name, measures = tree_line
-        self_cpu_time = ""
-        cpu_time = ""
-        cuda_time = ""
+        self_cpu_time = 0
+        cpu_time = 0
+        cuda_time = 0
         if measures:
-            self_cpu_time = tprofiler.format_time(measures.self_cpu_total)
-            cpu_time = tprofiler.format_time(measures.cpu_total)
-            cuda_time = tprofiler.format_time(measures.cuda_total)
+            self_cpu_time = (measures.self_cpu_total)
+            cpu_time = (measures.cpu_total)
+            cuda_time = (measures.cuda_total)
         pre = ""
         next_depths = [pl[0] for pl in tree_lines[idx + 1 :]]
         current = True
