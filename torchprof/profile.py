@@ -191,9 +191,9 @@ def traces_to_display(traces, trace_events, show_events=False, paths=None):
     for line in format_lines:
         label, self_cpu_time, cpu_time, cuda_time = line
         mynn["Layer Name"].append(str(label))
-        mynn["Self CPU total"].append(str(self_cpu_time))
-        mynn["CPU total"].append(str(cpu_time))
-        mynn["GPU total"].append(str(cuda_time))
+        mynn["Self CPU total"].append(self_cpu_time)
+        mynn["CPU total"].append(cpu_time)
+        mynn["GPU total"].append(cuda_time)
         
     df = DataFrame(mynn, columns= ["Layer Name","Self CPU total","CPU total","GPU total"])
     
