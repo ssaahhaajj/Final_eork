@@ -71,7 +71,7 @@ where,
 
 **want_op_file**:  optional argument which is False by default, if we want output in file(csv format) then simply set ```want_op_file=True``` then calling prof.display() will store the output in the file named ```output_file.csv``` 
 
-Example for the above methods have been illustrated in the Google Colab modules [here](from profile_f_t import profile) and [here](https://colab.research.google.com/drive/1hHPaQOsaeyXmLv5ZfOL6uE-ToywCpyYy?usp=sharing).
+Example for the above methods have been illustrated in the Google Colab modules [here](https://colab.research.google.com/drive/1fRstwxk9FQ2JlgaaEChW1CFB_f0T1-cI?usp=sharing) and [here](https://colab.research.google.com/drive/1hHPaQOsaeyXmLv5ZfOL6uE-ToywCpyYy?usp=sharing).
 
 The dataset has been prepared from the 40+ transformer models using various tokenizers and input data such as below combinations:
 Model Name  | Tokenizer
